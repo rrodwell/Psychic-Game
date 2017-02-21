@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Psychic Game</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<title>Psychic Game</title>
 
-	
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
+		
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container gameHeader">
+				<div class="navbar-header" >
+					<h1>The Psychic Game</h1>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container section">
+			<div class="panel panel-default firstPanel">
+				<div class="panel-body">
+					<h3 class="text-info">Are you a psychic?</h3>
+					<p>Test your psychic ability by trying to guess what the computer is thinking. Click the start button to begin!</p>
+				</div>
+			</div>
+		</div>
+		<div class="container section">
+			
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h3 class="panel-title">Guess what letter I am thinking of...</h3>
+				</div>
+				<div class="panel-body panel-letters">
+					<div id="letterScoreTracker">
+						<div>
+							<h4>Instructions:</h4>
+							<p>Pick a letter from A-Z.</p>
+						</div>
+						<hr>
+						<p id="wins">Wins: 0 </p>
+						<p id="losses">Losses: 0</p>
+						<p id="guessLeft">Guesses Left: 10</p>
+					</div>
+					<div id="lettersGuessed">
+						<p id="guessed">Your Guesses so far: </p>
+					</div>
+					<button class="btn btn-info" onclick="isLetter()"> Start </button>
+				</div>
+		</div>
+		<div class="container danger">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">Guess what number I am thinking of...</h3>
+				</div>
+				<div class="panel-body panel-numbers">
+					<div id="numberScoreTracker">
+						<div>
+							<h4>Instructions:</h4>
+							<p>Pick a number between 1-9.</p>
+							</div>
+							<hr>
+							<p id="numberWins">Wins: 0</p>
+							<p id="numberLosses">Losses: 0</p>
+							<p id="numberGuessLeft">Guesses Left: 4</p>
+						</div>
+						<div id="numberArray">
+							<p>Your Guesses so far: </p>
+						</div>
+						<button class="btn btn-info" onclick="isNumber()"> Start 
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-</head>
-<body>
-
-	<h1>The Psychic Game</h1>
-	<p>Guess what letter I am thinking of...</p>
-
-	<div id="scoreTracker">
-		<p id="numWins">Wins: </p>
-		<p id="numLoss">Losses: </p>
-		<p id="numLeft">Guesses Left: </p>
-	</div>
-	<div id="lettersGuessed">
-		<p id="guessed">Your Guesses so far: </p>
-	</div>
-
-<!-- JavaScript -->
-	<script type="text/javascript" src="../app.js"></script>
-	
-</body>
+		<!-- JavaScript -->
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
+		
+	</body>
 </html>

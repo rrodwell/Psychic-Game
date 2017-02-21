@@ -1,70 +1,132 @@
-//Letter choices available
-var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+//array of alphabet and numbers
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numbers = ["1","2","3","4","5","6","7","8","9"];
 
-//Setting all to zero
-var wins = 0;
-var losses = 0;
-var guesses = 9;
+//variables to track wins, losses, and number of guesses
+var winCounter = 0;
+var lossCounter = 0;
 var guessesLeft = 9;
-var guessedLetters = [];
-var letterToGuess = null;
+var playingLetters = false;
+var playingNumbers = false;
 
+//On start click for letters game 
+function isLetter() {
 
+	var lettersGuessed = [];
+	playingLetters = true;
 
-//Lets the computer select a random letter from the available choices
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	//random letter guess for computer
+	var computerLetter = letters[Math.floor(Math.random() * letters.length)];
 
-//Allows the user 9 guesses
-// guesses = guesses || 9
-var updateGuessesLeft = function() {
-  // Here we are grabbing the HTML element and setting it equal to the guessesLeft. (i.e. guessesLeft will get displayed in HTML)
-  document.querySelector('#numLeft').innerHTML = "Guesses left: " + guessesLeft;
+	alert("Select any letter key to play.");
+
+	document.onkeyup = function(event) {
+        // Determine which key was pressed
+        var userGuess = event.key;
+
+        if (letters.indexOf(userGuess) > -1){
+
+	        if (guessesLeft != 0){
+			    if ((userGuess !== computerLetter) && (guessesLeft > 0)){
+			    	lettersGuessed.push(userGuess);
+			    	guessesLeft--;
+			    	//print that to html
+			    	document.getElementById("guessLeft").innerHTML = "<p>Guesses Left : " + guessesLeft + "</p>";
+			    	document.getElementById("lettersGuessed").innerHTML = "<p>Your Guesses so far: " + lettersGuessed + "</p>";
+
+			    } else if (userGuess === computerLetter){
+			    	alert("You must be psychic!");
+			    	winCounter ++;
+			    	guessesLeft = 9
+			    	document.getElementById("wins").innerHTML = "<p>Wins: " + winCounter + "</p>";
+			    	document.getElementById("guessLeft").innerHTML = "<p>Guesses Left : 10</p>";
+			    	document.getElementById("lettersGuessed").innerHTML = "<p>Your Guesses so far: </p>";
+			    }
+			 } else {
+			 	alert("Game over! The answer was " + computerLetter + ". Looks like you are not psychic...");
+			 	alert("Click Start to play again")
+			 	lettersGuessed = [];
+			 	lossCounter ++;
+			 	guessesLeft = 9
+			 	//print to html
+			 	document.getElementById("losses").innerHTML = "<p>Losses: " + lossCounter + "</p>";
+			 	document.getElementById("guessLeft").innerHTML = "<p>Guesses Left : 10</p>";
+				document.getElementById("lettersGuessed").innerHTML = "<p>Your Guesses so far: </p>";
+			 }
+		};
+
+    };
+
 };
 
-var updateLetterToGuess = function() {
-  this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
+var winNumCounter = 0;
+var lossNumCounter = 0;
+var guessesNumLeft = 3;
+
+//On start click for numbers game 
+function isNumber() {
+
+	var emptyNumArray = [];
+	playingNumbers = true;
+
+	//random number guess for computer
+	var computerNumber = numbers[Math.floor(Math.random() * numbers.length)];
+	
+	alert("Select any letter key to play.");
+	
+	document.onkeyup = function(event) {
+        // Determine which key was pressed
+        var userGuess = event.key;
+
+        if (numbers.indexOf(userGuess) > -1){
+
+	        if (guessesNumLeft != 0){
+			    if ((userGuess != computerNumber) && (guessesNumLeft > 0)){
+			    	emptyNumArray.push(userGuess);
+			    	guessesNumLeft--;
+			    	//print that to html
+			    	document.getElementById("numberGuessLeft").innerHTML = "<p>Guesses Left : " + String(guessesNumLeft) + "</p>";
+			    	document.getElementById("numberArray").innerHTML = "<p>Your Guesses so far: " + emptyNumArray + "</p>";
+
+			    } else if (userGuess == computerNumber){
+			    	alert("You must be psychic!");
+			    	winNumCounter ++;
+			    	guessesNumLeft = 3
+			    	document.getElementById("numberWins").innerHTML = "<p>Wins: " + String(winNumCounter) + "</p>";
+			    	document.getElementById("numberGuessLeft").innerHTML = "<p>Guesses Left : 4</p>";
+			    	document.getElementById("numberArray").innerHTML = "<p>Your Guesses so far: </p>";
+			    }
+			 } else {
+			 	alert("Game over! The answer was " + computerNumber + ". Looks like you are not psychic...");
+			 	alert("Click Start to play again")
+			 	emptyNumArray = [];
+			 	lossNumCounter ++;
+			 	guessesNumLeft = 3
+			 	//print to html
+			 	document.getElementById("numberLosses").innerHTML = "<p>Losses: " + String(lossNumCounter) + "</p>";
+			 	document.getElementById("numberGuessLeft").innerHTML = "<p>Guesses Left : 4</p>";
+				document.getElementById("numberArray").innerHTML = "<p>Your Guesses so far: </p>";
+			 }
+		};
+
+    };
+
 };
-var updateGuessesSoFar = function() {
-  // Here we take the guesses the user has tried -- then display it as letters separated by commas. 
-  document.querySelector('#guessed').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
-};
-// Function will be called when we reset everything
-var reset = function() {
-  totalGuesses = 9;
-  guessesLeft = 9;
-  guessedLetters = [];
-
-  updateLetterToGuess();
-  updateGuessesLeft();
-  updateGuessesSoFar();
-}
-
-updateLetterToGuess();
-updateGuessesLeft();
 
 
-//When key is released it becomes the users guess
-document.onkeyup = function(event) {
-    guessesLeft--;
-  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-  guessedLetters.push(userGuess);
-  updateGuessesLeft();
-  updateGuessesSoFar();
 
-        if (guessesLeft > 0){
-            if (userGuess == letterToGuess){
-                wins++;
-                document.querySelector('#numWins').innerHTML = "Wins: " + wins;
-                alert("Yes, you are psychic!");
-                reset();
-            }
-        }else if(guessesLeft == 0){
-            // Then we will loss and we'll update the html to display the loss 
-            losses++;
-            document.querySelector('#numLoss').innerHTML = "Losses: " + losses;
-            alert("Sorry, you're not psychic, try again?");
-            // Then we'll call the reset. 
-            reset();
-        }
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+

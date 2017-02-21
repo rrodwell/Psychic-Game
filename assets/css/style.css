@@ -1,0 +1,30 @@
+body {
+	color: #cccccc;
+}
+
+.section{
+	width: 75%;
+}
+
+.danger{
+	padding-left: 0;
+	width: 102%;
+}
+
+.gameHeader {
+	align-content: center;
+	width: 50%;
+}
+
+
+.firstPanel{
+	text-align: center;
+}
+
+h4{
+	text-decoration: underline;
+}
+
+h1{
+	font-size: 63px;
+}
