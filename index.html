@@ -3,10 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<title>Psychic Game</title>
-
+		<!-- Bootswatch -->
 		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		
@@ -19,7 +22,6 @@
 				</div>
 			</div>
 		</nav>
-		
 		<div class="container section">
 			<div class="panel panel-default firstPanel">
 				<div class="panel-body">
@@ -29,7 +31,8 @@
 			</div>
 		</div>
 		<div class="container section">
-			
+			<div id="lossTag"></div>
+			<div id="winTag"></div>
 			<div class="panel panel-warning">
 				<div class="panel-heading">
 					<h3 class="panel-title">Guess what letter I am thinking of...</h3>
@@ -48,19 +51,21 @@
 					<div id="lettersGuessed">
 						<p id="guessed">Your Guesses so far: </p>
 					</div>
-					<button class="btn btn-info" onclick="isLetter()"> Start </button>
+					<button class="btn btn-primary" onclick="isLetter()"> Start </button>
 				</div>
-		</div>
-		<div class="container danger">
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					<h3 class="panel-title">Guess what number I am thinking of...</h3>
-				</div>
-				<div class="panel-body panel-numbers">
-					<div id="numberScoreTracker">
-						<div>
-							<h4>Instructions:</h4>
-							<p>Pick a number between 1-9.</p>
+			</div>
+			<div id="numLossTag"></div>
+			<div id="numWinTag"></div>
+			<div class="container info">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Guess what number I am thinking of...</h3>
+					</div>
+					<div class="panel-body panel-numbers">
+						<div id="numberScoreTracker">
+							<div>
+								<h4>Instructions:</h4>
+								<p>Pick a number between 1-9.</p>
 							</div>
 							<hr>
 							<p id="numberWins">Wins: 0</p>
@@ -70,13 +75,12 @@
 						<div id="numberArray">
 							<p>Your Guesses so far: </p>
 						</div>
-						<button class="btn btn-info" onclick="isNumber()"> Start 
+						<button class="btn btn-primary" onclick="isNumber()"> Start
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<!-- JavaScript -->
 		<script type="text/javascript" src="assets/javascript/game.js"></script>
 		

@@ -15,8 +15,12 @@ function isLetter() {
 	var lettersGuessed = [];
 	playingLetters = true;
 
+	//clear winTag and lossTag
+	document.getElementById("winTag").innerHTML = '<div id="winTag"></div>';
+	document.getElementById("lossTag").innerHTML = '<div id="lossTag"></div>';
 	//random letter guess for computer
 	var computerLetter = letters[Math.floor(Math.random() * letters.length)];
+	console.log(computerLetter);
 
 	alert("Select any letter key to play.");
 
@@ -35,7 +39,12 @@ function isLetter() {
 			    	document.getElementById("lettersGuessed").innerHTML = "<p>Your Guesses so far: " + lettersGuessed + "</p>";
 
 			    } else if (userGuess === computerLetter){
-			    	alert("You must be psychic!");
+			    	document.getElementById("winTag").innerHTML = 
+			    	'<div class="alert alert-dismissible alert-success">' +
+					'<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+					'<strong>Oh snap!</strong> You must be a pyschic.' +
+					'</div>';
+					//alert("Press Start to play again!");
 			    	winCounter ++;
 			    	guessesLeft = 9
 			    	document.getElementById("wins").innerHTML = "<p>Wins: " + winCounter + "</p>";
@@ -43,8 +52,13 @@ function isLetter() {
 			    	document.getElementById("lettersGuessed").innerHTML = "<p>Your Guesses so far: </p>";
 			    }
 			 } else {
-			 	alert("Game over! The answer was " + computerLetter + ". Looks like you are not psychic...");
-			 	alert("Click Start to play again")
+			 	document.getElementById("lossTag").innerHTML = 
+			    	'<div class="alert alert-dismissible alert-danger">' +
+					'<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+					'<strong>Uh oh!</strong> Looks like you are not a pyschic. The answer was ' + computerLetter + 
+					'</div>';
+			 	//alert("Game over! The answer was " + computerLetter + ". Looks like you are not psychic...");
+			 	//alert("Click Start to play again!")
 			 	lettersGuessed = [];
 			 	lossCounter ++;
 			 	guessesLeft = 9
@@ -69,6 +83,9 @@ function isNumber() {
 	var emptyNumArray = [];
 	playingNumbers = true;
 
+	//clear winning lossing tags
+	document.getElementById("numWinTag").innerHTML = '<div id="winTag"></div>';
+	document.getElementById("numLossTag").innerHTML = '<div id="lossTag"></div>';
 	//random number guess for computer
 	var computerNumber = numbers[Math.floor(Math.random() * numbers.length)];
 	
@@ -89,7 +106,14 @@ function isNumber() {
 			    	document.getElementById("numberArray").innerHTML = "<p>Your Guesses so far: " + emptyNumArray + "</p>";
 
 			    } else if (userGuess == computerNumber){
-			    	alert("You must be psychic!");
+
+			    	document.getElementById("numWinTag").innerHTML = 
+			    	'<div class="alert alert-dismissible alert-success">' +
+					'<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+					'<strong>Oh snap!</strong> You must be a pyschic.' +
+					'</div>';
+					//alert("Press Start to play again!");
+			    	//alert("You must be psychic!");
 			    	winNumCounter ++;
 			    	guessesNumLeft = 3
 			    	document.getElementById("numberWins").innerHTML = "<p>Wins: " + String(winNumCounter) + "</p>";
@@ -97,8 +121,14 @@ function isNumber() {
 			    	document.getElementById("numberArray").innerHTML = "<p>Your Guesses so far: </p>";
 			    }
 			 } else {
-			 	alert("Game over! The answer was " + computerNumber + ". Looks like you are not psychic...");
-			 	alert("Click Start to play again")
+			 	
+			 	document.getElementById("numLossTag").innerHTML = 
+			    	'<div class="alert alert-dismissible alert-danger">' +
+					'<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+					'<strong>Uh oh!</strong> Looks like you are not a pyschic. The answer was ' + computerNumber + 
+					'</div>';
+			 	//alert("Game over! The answer was " + computerNumber + ". Looks like you are not psychic...");
+			 	//alert("Click Start to play again")
 			 	emptyNumArray = [];
 			 	lossNumCounter ++;
 			 	guessesNumLeft = 3
