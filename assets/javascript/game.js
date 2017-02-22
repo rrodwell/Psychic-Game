@@ -20,7 +20,6 @@ function isLetter() {
 	document.getElementById("lossTag").innerHTML = '<div id="lossTag"></div>';
 	//random letter guess for computer
 	var computerLetter = letters[Math.floor(Math.random() * letters.length)];
-	console.log(computerLetter);
 
 	alert("Select any letter key to play.");
 
