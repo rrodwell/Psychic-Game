@@ -88,7 +88,7 @@ function isNumber() {
 	//random number guess for computer
 	var computerNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
-	alert("Select any letter key to play.");
+	alert("Select any number key to play.");
 
 	document.onkeyup = function(event) {
         // Determine which key was pressed
